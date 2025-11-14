@@ -1,0 +1,35 @@
+# Histograma
+    fig1 = px.histogram(df, x='salario', nbins=30, title='Distribuição de Salários')
+
+    fig2 = px.pie(df, names='area_atuacao', color='area_atuacao', hole=0.2,
+                  color_discrete_sequence=px.colors.sequential.RdBu)
+
+
+    # Gráfico de bolha
+    fig3 = px.scatter(df, x='idade', y='salario', size='anos_experiencia', color='area_atuacao',
+                      hover_name='estado', size_max=60)
+    fig3.update_layout(title='Salário por Idade e Anos de Experiência')
+
+
+    # Gráfico de Linha
+    fig4 = px.line(df, x='idade', y='salario', color='area_atuacao', facet_col='nivel_educacao')
+    fig4.update_layout(
+        title='Salário por Idade e Área de Atuação para cada Nível de Educação',
+        xaxis_title='Idade',
+        yaxis_title='Salário'
+    )
+
+
+    # Gráfico 3D
+    fig5 = px.scatter_3d(df, x='idade', y='salario', z='anos_experiencia', color='nivel_educacao')
+
+
+    # Gráfico de Barra
+    fig6 = px.bar(df, x='estado_civil', y='salario', color='nivel_educacao',
+                  barmode='group', color_discrete_sequence=px.colors.qualitative.Set1)
+    fig6.update_layout(
+        title='Salário por Estado Civil e Nível de Educação',
+        xaxis_title='Estado Civil',
+        yaxis_title='Salário',
+        legend_title='Nível de Educação'
+    )
